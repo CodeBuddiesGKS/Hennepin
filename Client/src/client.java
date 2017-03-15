@@ -3038,10 +3038,10 @@ public class client extends RSApplet {
 		if (super.keyArray[1] == 1 || super.keyArray[2] == 1
 				|| super.keyArray[3] == 1 || super.keyArray[4] == 1) {
 			aBoolean1017 = true;
-			System.out.println("aBoolean1017 Set");
+			//System.out.println("aBoolean1017 Set");
 		}
 		if (aBoolean1017 && anInt1016 <= 0) {
-			System.out.println("aBoolean1017 && anInt1016 <= 0");
+			//System.out.println("aBoolean1017 && anInt1016 <= 0");
 			anInt1016 = 20;
 			aBoolean1017 = false;
 			stream.createFrame(86);
@@ -8665,7 +8665,7 @@ public class client extends RSApplet {
 			// Handle left arrow key rotation
 			if (super.keyArray[1] == 1){
 				anInt1186 += (-24 - anInt1186) / 2;
-				System.out.println("left rotate method108");
+				//System.out.println("left rotate method108");
 			}
 
 			else if (super.keyArray[2] == 1)

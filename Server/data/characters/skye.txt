@@ -4,8 +4,8 @@ character-password =
 
 [CHARACTER]
 character-height = 0
-character-posx = 3089
-character-posy = 3488
+character-posx = 3092
+character-posy = 3495
 character-rights = 0
 crystal-bow-shots = 0
 skull-timer = -1
@@ -50,26 +50,26 @@ character-equip = 13	-1	0
 
 [LOOK]
 character-look = 0	0
-character-look = 1	7
-character-look = 2	25
-character-look = 3	29
-character-look = 4	35
-character-look = 5	39
-character-look = 6	44
-character-look = 7	14
-character-look = 8	7
-character-look = 9	8
-character-look = 10	9
-character-look = 11	5
+character-look = 1	0
+character-look = 2	19
+character-look = 3	26
+character-look = 4	33
+character-look = 5	36
+character-look = 6	42
+character-look = 7	10
+character-look = 8	0
+character-look = 9	0
+character-look = 10	0
+character-look = 11	0
 character-look = 12	0
 
 [SKILLS]
-character-skill = 0	16	3000
+character-skill = 0	18	3750
 character-skill = 1	1	0
 character-skill = 2	1	0
-character-skill = 3	14	2296
+character-skill = 3	11	2545
 character-skill = 4	1	0
-character-skill = 5	1	0
+character-skill = 5	0	0
 character-skill = 6	1	0
 character-skill = 7	1	0
 character-skill = 8	1	0

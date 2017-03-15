@@ -416,7 +416,7 @@ public final class EntityDef {
 				}
 				if (npc.name != null) {
 					dat.writeByte(2);
-					writeString(dat, npc.name);	
+					writeString(dat, npc.name);
 				}
 				if (npc.description != null) {
 					dat.writeByte(3);
