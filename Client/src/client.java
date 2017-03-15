@@ -5405,6 +5405,7 @@ public class client extends RSApplet {
 						menuActionID[menuActionRow] = 606;
 						menuActionRow++;
 					}
+
 					menuActionName[menuActionRow] = "Add ignore @whi@" + s;
 					menuActionID[menuActionRow] = 42;
 					menuActionRow++;

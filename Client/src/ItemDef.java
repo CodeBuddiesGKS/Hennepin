@@ -64,8 +64,6 @@ public final class ItemDef {
 			}
 			fw.close();
 		} catch (IOException ioe) {ioe.printStackTrace();}
-	
-	
 	}
 	
 	public static void unpackConfig(StreamLoader streamLoader)	 {

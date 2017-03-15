@@ -69,6 +69,8 @@ public class GUI extends JFrame {
 								e.printStackTrace();
 							} catch (InterruptedException e) {
 								e.printStackTrace();
+							} catch (Exception e){
+								e.printStackTrace();
 							}
 						}
 					}).start();
