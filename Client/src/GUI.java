@@ -24,8 +24,19 @@ public class GUI extends JFrame {
 	private JTextField titleField;
 	
 	public static void main(String[] args) {
-		JFrame gui = new GUI();
-		gui.setVisible(true);
+
+		//JFrame gui = new GUI();
+		//gui.setVisible(true);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				int port = 43594;
+				String host = "0.0.0.0";
+				new client(host, port).execute(new String[]{"10", "0", "highmem", "members", "32"});
+				new Jframe(host, port, "");
+			}
+
+		}).start();
 	}
 	
 	@SuppressWarnings({ "static-access" })

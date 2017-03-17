@@ -3414,8 +3414,7 @@ public class client extends RSApplet {
 		return true;
 	}
 
-	private StreamLoader streamLoaderForName(int i, String s, String s1, int j,
-			int k) {
+	private StreamLoader streamLoaderForName(int i, String s, String s1, int j, int k) {
 		byte abyte0[] = null;
 		int l = 5;
 		try {
@@ -4637,16 +4636,15 @@ public class client extends RSApplet {
 						&& (npc.y & 0x7f) == 64) {
 					for (int j2 = 0; j2 < npcCount; j2++) {
 						NPC npc2 = npcArray[npcIndices[j2]];
-						if (npc2 != null && npc2 != npc
-								&& npc2.desc.aByte68 == 1 && npc2.x == npc.x
-								&& npc2.y == npc.y)
-							buildAtNPCMenu(npc2.desc, npcIndices[j2], j1, i1);
+						if (npc2 != null && npc2 != npc && npc2.desc.aByte68 == 1 && npc2.x == npc.x && npc2.y == npc.y) {
+						    //System.out.println("npc2.desc");
+                            buildAtNPCMenu(npc2.desc, npcIndices[j2], j1, i1);
+                        }
 					}
 
 					for (int l2 = 0; l2 < playerCount; l2++) {
 						Player player = playerArray[playerIndices[l2]];
-						if (player != null && player.x == npc.x
-								&& player.y == npc.y)
+						if (player != null && player.x == npc.x && player.y == npc.y)
 							buildAtPlayerMenu(i1, playerIndices[l2], player, j1);
 					}
 
@@ -4661,9 +4659,11 @@ public class client extends RSApplet {
 						if (class30_sub2_sub4_sub1_sub1_2 != null
 								&& class30_sub2_sub4_sub1_sub1_2.desc.aByte68 == 1
 								&& class30_sub2_sub4_sub1_sub1_2.x == player.x
-								&& class30_sub2_sub4_sub1_sub1_2.y == player.y)
-							buildAtNPCMenu(class30_sub2_sub4_sub1_sub1_2.desc,
-									npcIndices[k2], j1, i1);
+								&& class30_sub2_sub4_sub1_sub1_2.y == player.y) {
+                            buildAtNPCMenu(class30_sub2_sub4_sub1_sub1_2.desc,
+                                    npcIndices[k2], j1, i1);
+                            //System.out.println("class30_sub2_sub4_sub1_sub1_2.desc");
+                        }
 					}
 
 					for (int i3 = 0; i3 < playerCount; i3++) {
@@ -6781,6 +6781,7 @@ public class client extends RSApplet {
 		if (!entityDef.aBoolean84)
 			return;
 		String s = entityDef.name;
+
 		if (entityDef.combatLevel != 0)
 			s = s
 					+ combatDiffColor(myPlayer.combatLevel,
@@ -7033,8 +7034,7 @@ public class client extends RSApplet {
 		String s = getDocumentBaseHost();
 		if (signlink.cache_dat != null) {
 			for (int i = 0; i < 5; i++)
-				decompressors[i] = new Decompressor(signlink.cache_dat,
-						signlink.cache_idx[i], i + 1);
+				decompressors[i] = new Decompressor(signlink.cache_dat, signlink.cache_idx[i], i + 1);
 		}
 		try {
 			titleStreamLoader = streamLoaderForName(1, "title screen", "title",
@@ -7047,20 +7047,19 @@ public class client extends RSApplet {
 					titleStreamLoader);
 			TextDrawingArea aTextDrawingArea_1273 = new TextDrawingArea(true,
 					"q8_full", titleStreamLoader);
+
 			drawLogo();
+
 			loadTitleScreen();
-			StreamLoader streamLoader = streamLoaderForName(2, "config",
-					"config", expectedCRCs[2], 30);
-			StreamLoader streamLoader_1 = streamLoaderForName(3, "interface",
-					"interface", expectedCRCs[3], 35);
-			StreamLoader streamLoader_2 = streamLoaderForName(4, "2d graphics",
-					"media", expectedCRCs[4], 40);
-			StreamLoader streamLoader_3 = streamLoaderForName(6, "textures",
-					"textures", expectedCRCs[6], 45);
-			StreamLoader streamLoader_4 = streamLoaderForName(7, "chat system",
-					"wordenc", expectedCRCs[7], 50);
-			StreamLoader streamLoader_5 = streamLoaderForName(8,
-					"sound effects", "sounds", expectedCRCs[8], 55);
+
+			StreamLoader streamLoader = streamLoaderForName(2, "config", "config", expectedCRCs[2], 30);
+
+			StreamLoader streamLoader_1 = streamLoaderForName(3, "interface", "interface", expectedCRCs[3], 35);
+			StreamLoader streamLoader_2 = streamLoaderForName(4, "2d graphics", "media", expectedCRCs[4], 40);
+			StreamLoader streamLoader_3 = streamLoaderForName(6, "textures", "textures", expectedCRCs[6], 45);
+			StreamLoader streamLoader_4 = streamLoaderForName(7, "chat system", "wordenc", expectedCRCs[7], 50);
+			StreamLoader streamLoader_5 = streamLoaderForName(8, "sound effects", "sounds", expectedCRCs[8], 55);
+
 			byteGroundArray = new byte[4][104][104];
 			intGroundArray = new int[4][105][105];
 			worldController = new WorldController(intGroundArray);

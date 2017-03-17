@@ -331,7 +331,6 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			j = 0;
 		if(i == 37){
 			j = 1;
-			System.out.println("Key Left Pressed");
 		}
 		if(i == 39)
 			j = 2;

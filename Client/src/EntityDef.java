@@ -20,9 +20,9 @@ public final class EntityDef {
 				return cache[j];
 		anInt56 = (anInt56 + 1) % 20;
 		EntityDef entityDef = cache[anInt56] = new EntityDef();
-		stream.currentOffset = streamIndices[i];
+		datStream.currentOffset = streamIndices[i];
 		entityDef.type = i;
-		entityDef.readValues(stream);
+		entityDef.readValues(datStream);
 		//entityDef.readValues(true, aClass30_Sub2_Sub2_60); // Collect original NPC data
 	/*if(i == 2550) { // NPC ID 
     entityDef.actions = new String[5];
@@ -324,9 +324,9 @@ public final class EntityDef {
 	entityDef.description = "A follower of Saradomin.".getBytes();
 	}
 	if(i == 83) {
-	stream.currentOffset = streamIndices[630]; 
+	datStream.currentOffset = streamIndices[630];
 	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
+	entityDef.readValues(datStream); // Collect original NPC data
 	entityDef.actions = new String[5];
 	entityDef.actions[1] = "Attack";
 	entityDef.models = new int[5];
@@ -342,9 +342,9 @@ public final class EntityDef {
 	entityDef.description = "Big, Red & Incredibly Evil".getBytes();
 	}
 	if(i == 84) {
-	stream.currentOffset = streamIndices[630]; 
+	datStream.currentOffset = streamIndices[630];
 	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
+	entityDef.readValues(datStream); // Collect original NPC data
 	entityDef.actions = new String[5];
 	entityDef.actions[1] = "Attack";
 	entityDef.models = new int[5];
@@ -372,9 +372,9 @@ public final class EntityDef {
 	entityDef.description = "Big, Black & extremely hard.".getBytes();
 	}
 	if(i == 82) {
-	stream.currentOffset = streamIndices[630]; 
+	datStream.currentOffset = streamIndices[630];
 	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
+	entityDef.readValues(datStream); // Collect original NPC data
 	entityDef.actions = new String[5];
 	entityDef.actions[1] = "Attack";
 	entityDef.models = new int[5];
@@ -584,14 +584,15 @@ public final class EntityDef {
 	}
 
 	public static void unpackConfig(StreamLoader streamLoader) {
-		stream = new Stream(streamLoader.getDataForName("npc.dat"));
-		Stream stream2 = new Stream(streamLoader.getDataForName("npc.idx"));
-		totalNPCs = stream2.readUnsignedWord();
+		datStream = new Stream(streamLoader.getDataForName("npc.dat"));
+		Stream idxStream = new Stream(streamLoader.getDataForName("npc.idx"));
+
+		totalNPCs = idxStream.readUnsignedWord();
 		streamIndices = new int[totalNPCs + 5000];
 		int i = 2;
 		for(int j = 0; j < totalNPCs; j++) {
 			streamIndices[j] = i;
-			i += stream2.readUnsignedWord();
+			i += idxStream.readUnsignedWord();
 		}
 		cache = new EntityDef[20];
 		for(int k = 0; k < 20; k++)
@@ -604,7 +605,7 @@ public final class EntityDef {
 		mruNodes = null;
 		streamIndices = null;
 		cache = null;
-		stream = null;
+		datStream = null;
 	}
 
 	public Model method164(int j, int k, int ai[])
@@ -677,8 +678,10 @@ public final class EntityDef {
 					models[j1] = stream.readUnsignedWord();
 
 			} else
-			if(i == 2)
+			if(i == 2) {
 				name = stream.readString();
+				System.out.println(name + " loaded.");
+			}
 			else
 			if(i == 3)
 				description = stream.readBytes();
@@ -813,7 +816,7 @@ public final class EntityDef {
 	private int anInt57;
 	public int anInt58;
 	private int anInt59;
-	private static Stream stream;
+	private static Stream datStream;
 	public int combatLevel;
 	private final int anInt64;
 	public String name;
