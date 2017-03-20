@@ -32,7 +32,7 @@ public class Client extends RSApplet {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setVisible(true); // can see the Client
+        frame.setVisible(true);
 
         init();
     }
