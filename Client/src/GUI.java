@@ -1,16 +1,12 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.UnknownHostException;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -23,17 +19,25 @@ public class GUI extends JFrame {
 	private JTextField hostField;
 	private JTextField titleField;
 	
-	public static void main(String[] args) {
-
-		//JFrame gui = new GUI();
-		//gui.setVisible(true);
+	public static void main(String[] args){
+		System.out.println("Started");
+//		JFrame gui = new GUI();
+//		gui.setVisible(true);
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				int port = 43594;
 				String host = "0.0.0.0";
-				new client(host, port).execute(new String[]{"10", "0", "highmem", "members", "32"});
-				new Jframe(host, port, "");
+
+				try {
+                    Client client = new Client(host, port);
+                    client.load();
+                } catch(UnknownHostException ex){
+				    ex.printStackTrace();
+                }
+
+				//new Client(host, port).execute(new String[]{"10", "0", "highmem", "members", "32"});
+				//new Jframe(host, port, "");
 			}
 
 		}).start();
@@ -103,8 +107,8 @@ public class GUI extends JFrame {
 							host = hostField.getText();
 						if(!portField.getText().isEmpty() && portField.getText() != null)
 							port = Integer.valueOf(portField.getText());
-						new client(host, port).execute(new String[]{"10", "0", "highmem", "members", "32"});
-						new Jframe(host, port, titleField.getText());
+						new Client(host, port).execute(new String[]{"10", "0", "highmem", "members", "32"});
+						//new Jframe(host, port, titleField.getText());
 					}
 					
 				}).start();

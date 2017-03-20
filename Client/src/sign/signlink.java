@@ -42,16 +42,15 @@ public final class signlink
             catch(Exception _ex) { }
     }
 
-    public void run()
-    {
+    public void run() {
         active = true;
         String s = findcachedir();
         uid = getuid(s);
-        try
-        {
+
+        try {
             File file = new File(s + "main_file_cache.dat");
-            if(file.exists() && file.length() > 0x3200000L)
-                file.delete();
+//            if(file.exists() && file.length() > 0x3200000L)
+//                file.delete();
             cache_dat = new RandomAccessFile(s + "main_file_cache.dat", "rw");
             for(int j = 0; j < 5; j++)
                 cache_idx[j] = new RandomAccessFile(s + "main_file_cache.idx" + j, "rw");
@@ -61,6 +60,7 @@ public final class signlink
         {
             exception.printStackTrace();
         }
+
         for(int i = threadliveid; threadliveid == i;)
         {
             if(socketreq != 0)
@@ -297,6 +297,7 @@ public final class signlink
 
     private signlink()
     {
+        System.out.println("Sign Link");
     }
 
     public static final int clientversion = 317;

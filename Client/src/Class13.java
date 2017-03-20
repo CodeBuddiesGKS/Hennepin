@@ -43,7 +43,7 @@ final class Class13
 		int j1 = class32.anInt570;
 		int k1 = j1;
 		int l1 = class32.anInt601 + 1;
-label0:
+		label0:
 		do
 		{
 			if(i > 0)
@@ -69,7 +69,7 @@ label0:
 				j1--;
 			}
 			boolean flag = true;
-			while(flag) 
+			while(flag)
 			{
 				flag = false;
 				if(j == l1)
@@ -167,7 +167,7 @@ label0:
 		if(Class32.anIntArray587 == null)
 			Class32.anIntArray587 = new int[class32.anInt578 * 0x186a0];
 		boolean flag19 = true;
-		while(flag19) 
+		while(flag19)
 		{
 			byte byte0 = method228(class32);
 			if(byte0 == 23)
@@ -264,7 +264,7 @@ label0:
 					} while(true);
 					class32.aByteArrayArray596[k3][k1] = (byte)l6;
 				}
-
+				int breakpoint = 0;
 			}
 
 			for(int l3 = 0; l3 < j4; l3++)
@@ -557,6 +557,8 @@ label0:
 
 		for(int k2 = i + 1; k2 <= j; k2++)
 			ai1[k2] = (ai[k2 - 1] + 1 << 1) - ai1[k2];
+
+		int breakpoint = 0;
 
 	}
 

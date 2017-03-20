@@ -61,6 +61,7 @@ public final class TextDrawingArea extends DrawingArea {
 		} else {
 			anIntArray1496[32] = anIntArray1496[105];
 		}
+		int breakpoint = 0;
 	}
 
 	public void method380(String s, int i, int j, int k) {

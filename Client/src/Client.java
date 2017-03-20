@@ -13,7 +13,32 @@ import sign.signlink;
 import javax.swing.*;
 
 @SuppressWarnings("unchecked")
-public class client extends RSApplet {
+public class Client extends RSApplet {
+
+
+    //region Documented Code
+
+    /**
+     *
+     */
+    public void load() throws UnknownHostException{
+
+        sign.signlink.startpriv(InetAddress.getByName(server));
+
+        JFrame frame = new JFrame("Project Hennepin");
+        JPanel contentPane = (JPanel) frame.getContentPane();
+        contentPane.setPreferredSize(new Dimension(765, 503));
+        contentPane.add(this);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true); // can see the Client
+
+        init();
+    }
+
+    //endregion
+
 
 	public int MapX, MapY;
 	public static int spellID = 0;
@@ -2661,8 +2686,9 @@ public class client extends RSApplet {
 	}
 
 	public static void execute(String args[]) {
+
 		try {
-			System.out.println("RS2 user client - release #" + 317);
+			System.out.println("RS2 user Client - release #" + 317);
 			if (args.length != 5) {
 				System.out
 						.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
@@ -2691,7 +2717,7 @@ public class client extends RSApplet {
 			}
 			signlink.storeid = Integer.parseInt(args[4]);
 			signlink.startpriv(InetAddress.getLocalHost());
-			// client client1 = new client();
+			// Client client1 = new Client();
 			// client1.createClientFrame(503, 765);
 		} catch (Exception exception) {
 		}
@@ -3278,26 +3304,19 @@ public class client extends RSApplet {
 		aRSImageProducer_1123 = null;
 		aRSImageProducer_1124 = null;
 		aRSImageProducer_1125 = null;
-		aRSImageProducer_1110 = new RSImageProducer(128, 265,
-				getGameComponent());
+		aRSImageProducer_1110 = new RSImageProducer(128, 265, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1111 = new RSImageProducer(128, 265,
-				getGameComponent());
+		aRSImageProducer_1111 = new RSImageProducer(128, 265, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1107 = new RSImageProducer(509, 171,
-				getGameComponent());
+		aRSImageProducer_1107 = new RSImageProducer(509, 171, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1108 = new RSImageProducer(360, 132,
-				getGameComponent());
+		aRSImageProducer_1108 = new RSImageProducer(360, 132, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1109 = new RSImageProducer(360, 200,
-				getGameComponent());
+		aRSImageProducer_1109 = new RSImageProducer(360, 200, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1112 = new RSImageProducer(202, 238,
-				getGameComponent());
+		aRSImageProducer_1112 = new RSImageProducer(202, 238, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
-		aRSImageProducer_1113 = new RSImageProducer(203, 238,
-				getGameComponent());
+		aRSImageProducer_1113 = new RSImageProducer(203, 238, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
 		aRSImageProducer_1114 = new RSImageProducer(74, 94, getGameComponent());
 		DrawingArea.setAllPixelsToZero();
@@ -3432,6 +3451,8 @@ public class client extends RSApplet {
 			StreamLoader streamLoader = new StreamLoader(abyte0);
 			return streamLoader;
 		}
+		// Return
+
 		int j1 = 0;
 		while (abyte0 == null) {
 			String s2 = "Unknown error";
@@ -7022,7 +7043,10 @@ public class client extends RSApplet {
 	}
 
 	void startUp() {
+
 		drawLoadingText(20, "Starting up");
+
+
 		if (signlink.sunjava)
 			super.minDelay = 5;
 		if (aBoolean993) {
@@ -7037,16 +7061,11 @@ public class client extends RSApplet {
 				decompressors[i] = new Decompressor(signlink.cache_dat, signlink.cache_idx[i], i + 1);
 		}
 		try {
-			titleStreamLoader = streamLoaderForName(1, "title screen", "title",
-					expectedCRCs[1], 25);
-			smallText = new TextDrawingArea(false, "p11_full",
-					titleStreamLoader);
-			aTextDrawingArea_1271 = new TextDrawingArea(false, "p12_full",
-					titleStreamLoader);
-			chatTextDrawingArea = new TextDrawingArea(false, "b12_full",
-					titleStreamLoader);
-			TextDrawingArea aTextDrawingArea_1273 = new TextDrawingArea(true,
-					"q8_full", titleStreamLoader);
+			titleStreamLoader = streamLoaderForName(1, "title screen", "title", expectedCRCs[1], 25);
+			smallText = new TextDrawingArea(false, "p11_full", titleStreamLoader);
+			aTextDrawingArea_1271 = new TextDrawingArea(false, "p12_full", titleStreamLoader);
+			chatTextDrawingArea = new TextDrawingArea(false, "b12_full", titleStreamLoader);
+			TextDrawingArea aTextDrawingArea_1273 = new TextDrawingArea(true, "q8_full", titleStreamLoader);
 
 			drawLogo();
 
@@ -11900,7 +11919,7 @@ public class client extends RSApplet {
 		fullscreenInterfaceID = -1;
 	}
 
-	public client(String host, int port) {
+	public Client(String host, int port) {
 
 		fullscreenInterfaceID = -1;
 		chatRights = new int[500];
