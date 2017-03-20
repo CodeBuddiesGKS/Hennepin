@@ -1706,8 +1706,8 @@ public final class Animation {
 				}
 				if(j == 7030){
 				int file = 1765;
-				if(FrameStart[file] < 1)
-				Class36.methodCustomAnimations(false, file);
+//				if(FrameStart[file] < 1)
+//				Class36.methodCustomAnimations(false, file);
 				int[] frames = {3,2,0,1,4,0};
 				int[] delays = {3,3,3,3,3,0};
 				anims[j].anInt352 = frames.length-1;

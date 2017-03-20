@@ -46,8 +46,6 @@ public class DrawingArea extends NodeSub {
 		int i = width * height;
 		for(int j = 0; j < i; j++)
 			pixels[j] = 0;
-
-		System.out.println();
 	}
 
 	public static void method335(int i, int j, int k, int l, int i1, int k1)

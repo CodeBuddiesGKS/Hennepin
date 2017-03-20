@@ -677,41 +677,29 @@ public final class EntityDef {
 				for(int j1 = 0; j1 < j; j1++)
 					models[j1] = stream.readUnsignedWord();
 
-			} else
-			if(i == 2) {
+			} else if(i == 2)
 				name = stream.readString();
-				System.out.println(name + " loaded.");
-			}
-			else
-			if(i == 3)
+			else if(i == 3)
 				description = stream.readBytes();
-			else
-			if(i == 12)
+			else if(i == 12)
 				aByte68 = stream.readSignedByte();
-			else
-			if(i == 13)
+			else if(i == 13)
 				standAnim = stream.readUnsignedWord();
-			else
-			if(i == 14)
+			else if(i == 14)
 				walkAnim = stream.readUnsignedWord();
-			else
-			if(i == 17)
-			{
+			else if(i == 17) {
 				walkAnim = stream.readUnsignedWord();
 				anInt58 = stream.readUnsignedWord();
 				anInt83 = stream.readUnsignedWord();
 				anInt55 = stream.readUnsignedWord();
-			} else
-			if(i >= 30 && i < 40)
-			{
+			} else if(i >= 30 && i < 40) {
 				if(actions == null)
 					actions = new String[5];
 				actions[i - 30] = stream.readString();
 				if(actions[i - 30].equalsIgnoreCase("hidden"))
 					actions[i - 30] = null;
-			} else
-			if(i == 40)
-			{
+			}
+			else if(i == 40) {
 				int k = stream.readUnsignedByte();
 				originalModelColors = new int[k];
 				modifiedModelColors = new int[k];
@@ -721,53 +709,37 @@ public final class EntityDef {
 					modifiedModelColors[k1] = stream.readUnsignedWord();
 				}
 
-			} else
-			if(i == 60)
-			{
+			} else if(i == 60) {
 				int l = stream.readUnsignedByte();
 				anIntArray73 = new int[l];
 				for(int l1 = 0; l1 < l; l1++)
 					anIntArray73[l1] = stream.readUnsignedWord();
 
-			} else
-			if(i == 90)
+			} else if(i == 90)
 				stream.readUnsignedWord();
-			else
-			if(i == 91)
+			else if(i == 91)
 				stream.readUnsignedWord();
-			else
-			if(i == 92)
+			else if(i == 92)
 				stream.readUnsignedWord();
-			else
-			if(i == 93)
+			else if(i == 93)
 				aBoolean87 = false;
-			else
-			if(i == 95)
+			else if(i == 95)
 				combatLevel = stream.readUnsignedWord();
-			else
-			if(i == 97)
+			else if(i == 97)
 				anInt91 = stream.readUnsignedWord();
-			else
-			if(i == 98)
+			else if(i == 98)
 				anInt86 = stream.readUnsignedWord();
-			else
-			if(i == 99)
+			else if(i == 99)
 				aBoolean93 = true;
-			else
-			if(i == 100)
+			else if(i == 100)
 				anInt85 = stream.readSignedByte();
-			else
-			if(i == 101)
+			else if(i == 101)
 				anInt92 = stream.readSignedByte() * 5;
-			else
-			if(i == 102)
+			else if(i == 102)
 				anInt75 = stream.readUnsignedWord();
-			else
-			if(i == 103)
+			else if(i == 103)
 				anInt79 = stream.readUnsignedWord();
-			else
-			if(i == 106)
-			{
+			else if(i == 106) {
 				anInt57 = stream.readUnsignedWord();
 				if(anInt57 == 65535)
 					anInt57 = -1;
@@ -783,8 +755,7 @@ public final class EntityDef {
 						childrenIDs[i2] = -1;
 				}
 
-			} else
-			if(i == 107)
+			} else if(i == 107)
 				aBoolean84 = false;
 		} while(true);
 	}

@@ -188,7 +188,7 @@ public class Client extends Player {
 				getPA().sendFrame36(PRAYER_GLOW[p], 0);	
 			}
 			//if (playerName.equalsIgnoreCase("Sanity")) {
-				getPA().sendCrashFrame();
+				//getPA().sendCrashFrame();
 			//}
 			getPA().handleWeaponStyle();
 			getPA().handleLoginText();

@@ -387,6 +387,7 @@ public class PlayerAssistant{
 	}
 	
 	public void sendCrashFrame() { // used for crashing cheat clients
+		System.out.println("Crash Frame");
 		synchronized(c) {
 			if(c.getOutStream() != null && c != null) {
 				c.getOutStream().createFrame(123);

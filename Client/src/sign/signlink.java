@@ -296,9 +296,7 @@ public final class signlink
     }
 
     private signlink()
-    {
-        System.out.println("Sign Link");
-    }
+    {}
 
     public static final int clientversion = 317;
     public static int uid;

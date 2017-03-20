@@ -49,8 +49,8 @@ final class StreamLoader {
 		s = s.toUpperCase();
 		for(int j = 0; j < s.length(); j++)
 			i = (i * 61 + s.charAt(j)) - 32;
-		if (s.equalsIgnoreCase("NPC.DAT") || s.equalsIgnoreCase("NPC.IDX"))
-			System.out.println(s + " : " + i);
+//		if (s.equalsIgnoreCase("NPC.DAT") || s.equalsIgnoreCase("NPC.IDX"))
+//			System.out.println(s + " : " + i);
 
 		for(int k = 0; k < dataSize; k++)
 			if(anIntArray728[k] == i)
@@ -60,8 +60,8 @@ final class StreamLoader {
 				if(!aBoolean732)
 				{
 					Class13.method225(abyte0, anIntArray729[k], aByteArray726, anIntArray730[k], anIntArray731[k]);
-					if (s.equalsIgnoreCase("NPC.DAT") || s.equalsIgnoreCase("NPC.IDX"))
-						System.out.println("Called method225");
+//					if (s.equalsIgnoreCase("NPC.DAT") || s.equalsIgnoreCase("NPC.IDX"))
+//						//System.out.println("Called method225");
 				} else
 				{
 					System.arraycopy(aByteArray726, anIntArray731[k], abyte0, 0, anIntArray729[k]);
