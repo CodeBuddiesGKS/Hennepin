@@ -5,9 +5,7 @@
 import java.applet.AppletContext;
 import java.awt.*;
 import java.io.*;
-import java.math.BigInteger;
 import java.net.*;
-import java.util.zip.CRC32;
 import java.lang.reflect.Method;
 import sign.signlink;
 import javax.swing.*;
@@ -16,14 +14,24 @@ import javax.swing.*;
 public class Client extends RSApplet {
 
 
-    //region Documented Code
+    //region Reviewed Instance Variables
+
+    /** Server IP Address e.g. "128.0.0.1" */
+    private String serverAddress;
+
+    /** Server port number */
+    private int serverPort;
+
+    //endregion
+
+    //region Reviewed Code
 
     /**
-     *
+     * Subject to change.
      */
     public void load() throws UnknownHostException{
 
-        sign.signlink.startpriv(InetAddress.getByName(server));
+        sign.signlink.startpriv(InetAddress.getByName(serverAddress));
 
         JFrame frame = new JFrame("Project Hennepin");
         JPanel contentPane = (JPanel) frame.getContentPane();
@@ -35,7 +43,199 @@ public class Client extends RSApplet {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        init();
+        nodeID = 10;
+        portOff = 0;
+        setLowMemory(false);
+        isMembers = true;
+        initClientFrame(503, 765);
+
+    }
+
+    /**
+     * Sets the heap memory usage for the Client.
+     * By disabling low memory more and higher fidelity resources are used.
+     * @param useLowMemory - if true, the client uses low memory
+     *                     - if false, the client uses high memory
+     */
+    private void setLowMemory(boolean useLowMemory){
+        WorldController.lowMem = useLowMemory;
+        Texture.lowMem = useLowMemory;
+        lowMem = useLowMemory;
+        ObjectManager.lowMem = useLowMemory;
+        ObjectDef.lowMem = useLowMemory;
+    }
+
+    /**
+     * Creates an unloaded Client.
+     * @param address - the server IP address
+     * @param port - the server port number
+     */
+    public Client(String address, int port) {
+
+        //region Reviewed Code
+        serverAddress = address;
+        serverPort = port;
+        //endregion
+
+        fullscreenInterfaceID = -1;
+        chatRights = new int[500];
+        chatTypeView = 0;
+        clanChatMode = 0;
+        cButtonHPos = -1;
+        cButtonHCPos = -1;
+        cButtonCPos = 0;
+        anIntArrayArray825 = new int[104][104];
+        friendsNodeIDs = new int[200];
+        groundArray = new NodeList[4][104][104];
+        aBoolean831 = false;
+        aStream_834 = new Stream(new byte[5000]);
+        npcArray = new NPC[16384];
+        npcIndices = new int[16384];
+        anIntArray840 = new int[1000];
+        aStream_847 = Stream.create();
+        aBoolean848 = true;
+        openInterfaceID = -1;
+        currentExp = new int[Skills.skillsCount];
+        aBoolean872 = false;
+        anIntArray873 = new int[5];
+        anInt874 = -1;
+        aBooleanArray876 = new boolean[5];
+        drawFlames = false;
+        reportAbuseInput = "";
+        unknownInt10 = -1;
+        menuOpen = false;
+        inputString = "";
+        maxPlayers = 2048;
+        myPlayerIndex = 2047;
+        playerArray = new Player[maxPlayers];
+        playerIndices = new int[maxPlayers];
+        anIntArray894 = new int[maxPlayers];
+        aStreamArray895s = new Stream[maxPlayers];
+        anInt897 = 1;
+        anIntArrayArray901 = new int[104][104];
+        anInt902 = 0x766654;
+        aByteArray912 = new byte[16384];
+        currentStats = new int[Skills.skillsCount];
+        ignoreListAsLongs = new long[100];
+        loadingError = false;
+        anInt927 = 0x332d25;
+        anIntArray928 = new int[5];
+        anIntArrayArray929 = new int[104][104];
+        chatTypes = new int[500];
+        chatNames = new String[500];
+        chatMessages = new String[500];
+        chatButtons = new Sprite[4];
+        sideIcons = new Sprite[15];
+        redStones = new Sprite[5];
+        aBoolean954 = true;
+        friendsListAsLongs = new long[200];
+        currentSong = -1;
+        drawingFlames = false;
+        spriteDrawX = -1;
+        spriteDrawY = -1;
+        anIntArray968 = new int[33];
+        anIntArray969 = new int[256];
+        decompressors = new Decompressor[5];
+        variousSettings = new int[2000];
+        aBoolean972 = false;
+        anInt975 = 50;
+        anIntArray976 = new int[anInt975];
+        anIntArray977 = new int[anInt975];
+        anIntArray978 = new int[anInt975];
+        anIntArray979 = new int[anInt975];
+        anIntArray980 = new int[anInt975];
+        anIntArray981 = new int[anInt975];
+        anIntArray982 = new int[anInt975];
+        aStringArray983 = new String[anInt975];
+        anInt985 = -1;
+        hitMarks = new Sprite[20];
+        anIntArray990 = new int[5];
+        aBoolean994 = false;
+        anInt1002 = 0x23201b;
+        amountOrNameInput = "";
+        aClass19_1013 = new NodeList();
+        aBoolean1017 = false;
+        anInt1018 = -1;
+        anIntArray1030 = new int[5];
+        aBoolean1031 = false;
+        mapFunctions = new Sprite[100];
+        dialogID = -1;
+        maxStats = new int[Skills.skillsCount];
+        anIntArray1045 = new int[2000];
+        aBoolean1047 = true;
+        anIntArray1052 = new int[151];
+        anInt1054 = -1;
+        aClass19_1056 = new NodeList();
+        anIntArray1057 = new int[33];
+        aClass9_1059 = new RSInterface();
+        mapScenes = new Background[100];
+        barFillColor = 0x4d4233;
+        anIntArray1065 = new int[7];
+        anIntArray1072 = new int[1000];
+        anIntArray1073 = new int[1000];
+        aBoolean1080 = false;
+        friendsList = new String[200];
+        inStream = Stream.create();
+        expectedCRCs = new int[9];
+        menuActionCmd2 = new int[500];
+        menuActionCmd3 = new int[500];
+        menuActionID = new int[500];
+        menuActionCmd1 = new int[500];
+        headIcons = new Sprite[20];
+        skullIcons = new Sprite[20];
+        headIconsHint = new Sprite[20];
+        tabAreaAltered = false;
+        aString1121 = "";
+        atPlayerActions = new String[5];
+        atPlayerArray = new boolean[5];
+        anIntArrayArrayArray1129 = new int[4][13][13];
+        anInt1132 = 2;
+        aClass30_Sub2_Sub1_Sub1Array1140 = new Sprite[1000];
+        aBoolean1141 = false;
+        aBoolean1149 = false;
+        crosses = new Sprite[8];
+        musicEnabled = true;
+        needDrawTabArea = false;
+        loggedIn = false;
+        canMute = false;
+        aBoolean1159 = false;
+        aBoolean1160 = false;
+        anInt1171 = 1;
+        myUsername = "";
+        myPassword = "";
+        genericLoadingError = false;
+        reportAbuseInterfaceID = -1;
+        aClass19_1179 = new NodeList();
+        anInt1184 = 128;
+        invOverlayInterfaceID = -1;
+        stream = Stream.create();
+        menuActionName = new String[500];
+        anIntArray1203 = new int[5];
+        anIntArray1207 = new int[50];
+        anInt1210 = 2;
+        anInt1211 = 78;
+        promptInput = "";
+        modIcons = new Background[2];
+        tabID = 3;
+        inputTaken = false;
+        songChanging = true;
+        anIntArray1229 = new int[151];
+        aClass11Array1230 = new Class11[4];
+        aBoolean1233 = false;
+        anIntArray1240 = new int[100];
+        anIntArray1241 = new int[50];
+        aBoolean1242 = false;
+        anIntArray1250 = new int[50];
+        rsAlreadyLoaded = false;
+        welcomeScreenRaised = false;
+        messagePromptRaised = false;
+        loginMessage1 = "";
+        loginMessage2 = "";
+        backDialogID = -1;
+        anInt1279 = 2;
+        bigX = new int[4000];
+        bigY = new int[4000];
+        anInt1289 = -1;
     }
 
     //endregion
@@ -44,7 +244,7 @@ public class Client extends RSApplet {
 	public int MapX, MapY;
 	public static int spellID = 0;
 	public static boolean newDamage = false;
-	private int portId;
+
 
 	private static String intToKOrMilLongName(int i) {
 		String s = String.valueOf(i);
@@ -377,14 +577,6 @@ public class Client extends RSApplet {
 		Texture.anIntArray1472 = anIntArray1182;
 	}
 
-	public void init() {
-		nodeID = 10;
-		portOff = 0;
-		setHighMem();
-		isMembers = true;
-		initClientFrame(503, 765);
-	}
-
 	public void startRunnable(Runnable runnable, int i) {
 		if (i > 10)
 			i = 10;
@@ -396,7 +588,7 @@ public class Client extends RSApplet {
 	}
 
 	public Socket openSocket(int port) throws IOException {
-		return new Socket(InetAddress.getByName(server), port);
+		return new Socket(InetAddress.getByName(serverAddress), port);
 	}
 
 	private void processMenuClick() {
@@ -2678,13 +2870,7 @@ public class Client extends RSApplet {
 		}
 	}
 
-	private static void setHighMem() {
-		WorldController.lowMem = false;
-		Texture.lowMem = false;
-		lowMem = false;
-		ObjectManager.lowMem = false;
-		ObjectDef.lowMem = false;
-	}
+
 
 	public static void execute(String args[]) {
 
@@ -2692,28 +2878,28 @@ public class Client extends RSApplet {
 			System.out.println("RS2 user Client - release #" + 317);
 			if (args.length != 5) {
 				System.out
-						.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
+						.println("Usage: node-id, serverPort-offset, [lowmem/highmem], [free/members], storeid");
 				return;
 			}
 			nodeID = Integer.parseInt(args[0]);
 			// portOff = Integer.parseInt(args[1]);
 			portOff = 0;
-			if (args[2].equals("lowmem"))
-				setLowMem();
-			else if (args[2].equals("highmem")) {
-				setHighMem();
-			} else {
-				System.out
-						.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
-				return;
-			}
+//			if (args[2].equals("lowmem"))
+//				setLowMem();
+//			else if (args[2].equals("highmem")) {
+//				setHighMem();
+//			} else {
+//				System.out
+//						.println("Usage: node-id, serverPort-offset, [lowmem/highmem], [free/members], storeid");
+//				return;
+//			}
 			if (args[3].equals("free"))
 				isMembers = false;
 			else if (args[3].equals("members")) {
 				isMembers = true;
 			} else {
 				System.out
-						.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
+						.println("Usage: node-id, serverPort-offset, [lowmem/highmem], [free/members], storeid");
 				return;
 			}
 			signlink.storeid = Integer.parseInt(args[4]);
@@ -5035,7 +5221,7 @@ public class Client extends RSApplet {
 					inputTaken = true;
 				}
 				if ((j == 13 || j == 10) && inputString.length() > 0) {
-					if (myPrivilege == 2 || server.equals(server) || 1 == 1/*
+					if (myPrivilege == 2 || serverAddress.equals(serverAddress) || 1 == 1/*
 																			 * to
 																			 * remove
 																			 */) {
@@ -6190,7 +6376,7 @@ public class Client extends RSApplet {
 				loginMessage2 = "Connecting to server...";
 				drawLoginScreen(true);
 			}
-			socketStream = new RSSocket(this, openSocket(portId + portOff));
+			socketStream = new RSSocket(this, openSocket(serverPort + portOff));
 			long l = TextClass.longForName(s);
 			int i = (int) (l >> 16 & 31L);
 			stream.currentOffset = 0;
@@ -6385,7 +6571,7 @@ public class Client extends RSApplet {
 			}
 			if (k == 9) {
 				loginMessage1 = "Login limit exceeded.";
-				loginMessage2 = "Too many connections from your address.";
+				loginMessage2 = "Too many connections from your server.";
 				return;
 			}
 			if (k == 10) {
@@ -7577,7 +7763,7 @@ public class Client extends RSApplet {
 
 	public URL getCodeBase() {
 		try {
-			return new URL(server + ":" + (80 + portOff));
+			return new URL(serverAddress + ":" + (80 + portOff));
 		} catch (Exception _ex) {
 		}
 		return null;
@@ -10264,14 +10450,6 @@ public class Client extends RSApplet {
 		}
 	}
 
-	private static void setLowMem() {
-		WorldController.lowMem = true;
-		Texture.lowMem = true;
-		lowMem = true;
-		ObjectManager.lowMem = true;
-		ObjectDef.lowMem = true;
-	}
-
 	private void method139(Stream stream) {
 		stream.initBitAccess();
 		int k = stream.readBits(8);
@@ -10792,170 +10970,7 @@ public class Client extends RSApplet {
 		fullscreenInterfaceID = -1;
 	}
 
-	public Client(String host, int port) {
 
-		fullscreenInterfaceID = -1;
-		chatRights = new int[500];
-		chatTypeView = 0;
-		clanChatMode = 0;
-		cButtonHPos = -1;
-		cButtonHCPos = -1;
-		cButtonCPos = 0;
-		server = host;
-		portId = port;
-		anIntArrayArray825 = new int[104][104];
-		friendsNodeIDs = new int[200];
-		groundArray = new NodeList[4][104][104];
-		aBoolean831 = false;
-		aStream_834 = new Stream(new byte[5000]);
-		npcArray = new NPC[16384];
-		npcIndices = new int[16384];
-		anIntArray840 = new int[1000];
-		aStream_847 = Stream.create();
-		aBoolean848 = true;
-		openInterfaceID = -1;
-		currentExp = new int[Skills.skillsCount];
-		aBoolean872 = false;
-		anIntArray873 = new int[5];
-		anInt874 = -1;
-		aBooleanArray876 = new boolean[5];
-		drawFlames = false;
-		reportAbuseInput = "";
-		unknownInt10 = -1;
-		menuOpen = false;
-		inputString = "";
-		maxPlayers = 2048;
-		myPlayerIndex = 2047;
-		playerArray = new Player[maxPlayers];
-		playerIndices = new int[maxPlayers];
-		anIntArray894 = new int[maxPlayers];
-		aStreamArray895s = new Stream[maxPlayers];
-		anInt897 = 1;
-		anIntArrayArray901 = new int[104][104];
-		anInt902 = 0x766654;
-		aByteArray912 = new byte[16384];
-		currentStats = new int[Skills.skillsCount];
-		ignoreListAsLongs = new long[100];
-		loadingError = false;
-		anInt927 = 0x332d25;
-		anIntArray928 = new int[5];
-		anIntArrayArray929 = new int[104][104];
-		chatTypes = new int[500];
-		chatNames = new String[500];
-		chatMessages = new String[500];
-		chatButtons = new Sprite[4];
-		sideIcons = new Sprite[15];
-		redStones = new Sprite[5];
-		aBoolean954 = true;
-		friendsListAsLongs = new long[200];
-		currentSong = -1;
-		drawingFlames = false;
-		spriteDrawX = -1;
-		spriteDrawY = -1;
-		anIntArray968 = new int[33];
-		anIntArray969 = new int[256];
-		decompressors = new Decompressor[5];
-		variousSettings = new int[2000];
-		aBoolean972 = false;
-		anInt975 = 50;
-		anIntArray976 = new int[anInt975];
-		anIntArray977 = new int[anInt975];
-		anIntArray978 = new int[anInt975];
-		anIntArray979 = new int[anInt975];
-		anIntArray980 = new int[anInt975];
-		anIntArray981 = new int[anInt975];
-		anIntArray982 = new int[anInt975];
-		aStringArray983 = new String[anInt975];
-		anInt985 = -1;
-		hitMarks = new Sprite[20];
-		anIntArray990 = new int[5];
-		aBoolean994 = false;
-		anInt1002 = 0x23201b;
-		amountOrNameInput = "";
-		aClass19_1013 = new NodeList();
-		aBoolean1017 = false;
-		anInt1018 = -1;
-		anIntArray1030 = new int[5];
-		aBoolean1031 = false;
-		mapFunctions = new Sprite[100];
-		dialogID = -1;
-		maxStats = new int[Skills.skillsCount];
-		anIntArray1045 = new int[2000];
-		aBoolean1047 = true;
-		anIntArray1052 = new int[151];
-		anInt1054 = -1;
-		aClass19_1056 = new NodeList();
-		anIntArray1057 = new int[33];
-		aClass9_1059 = new RSInterface();
-		mapScenes = new Background[100];
-		barFillColor = 0x4d4233;
-		anIntArray1065 = new int[7];
-		anIntArray1072 = new int[1000];
-		anIntArray1073 = new int[1000];
-		aBoolean1080 = false;
-		friendsList = new String[200];
-		inStream = Stream.create();
-		expectedCRCs = new int[9];
-		menuActionCmd2 = new int[500];
-		menuActionCmd3 = new int[500];
-		menuActionID = new int[500];
-		menuActionCmd1 = new int[500];
-		headIcons = new Sprite[20];
-		skullIcons = new Sprite[20];
-		headIconsHint = new Sprite[20];
-		tabAreaAltered = false;
-		aString1121 = "";
-		atPlayerActions = new String[5];
-		atPlayerArray = new boolean[5];
-		anIntArrayArrayArray1129 = new int[4][13][13];
-		anInt1132 = 2;
-		aClass30_Sub2_Sub1_Sub1Array1140 = new Sprite[1000];
-		aBoolean1141 = false;
-		aBoolean1149 = false;
-		crosses = new Sprite[8];
-		musicEnabled = true;
-		needDrawTabArea = false;
-		loggedIn = false;
-		canMute = false;
-		aBoolean1159 = false;
-		aBoolean1160 = false;
-		anInt1171 = 1;
-		myUsername = "";
-		myPassword = "";
-		genericLoadingError = false;
-		reportAbuseInterfaceID = -1;
-		aClass19_1179 = new NodeList();
-		anInt1184 = 128;
-		invOverlayInterfaceID = -1;
-		stream = Stream.create();
-		menuActionName = new String[500];
-		anIntArray1203 = new int[5];
-		anIntArray1207 = new int[50];
-		anInt1210 = 2;
-		anInt1211 = 78;
-		promptInput = "";
-		modIcons = new Background[2];
-		tabID = 3;
-		inputTaken = false;
-		songChanging = true;
-		anIntArray1229 = new int[151];
-		aClass11Array1230 = new Class11[4];
-		aBoolean1233 = false;
-		anIntArray1240 = new int[100];
-		anIntArray1241 = new int[50];
-		aBoolean1242 = false;
-		anIntArray1250 = new int[50];
-		rsAlreadyLoaded = false;
-		welcomeScreenRaised = false;
-		messagePromptRaised = false;
-		loginMessage1 = "";
-		loginMessage2 = "";
-		backDialogID = -1;
-		anInt1279 = 2;
-		bigX = new int[4000];
-		bigY = new int[4000];
-		anInt1289 = -1;
-	}
 
     private boolean parsePacket() {
         if (socketStream == null)
@@ -12521,7 +12536,7 @@ public class Client extends RSApplet {
 	private static int anInt1288;
 	private int anInt1289;
 	public static int anInt1290;
-	public static String server = "";
+
 	public int drawCount;
 	public int fullscreenInterfaceID;
 	public int anInt1044;// 377
