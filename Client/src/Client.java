@@ -44,11 +44,9 @@ public class Client extends RSApplet {
         frame.setVisible(true);
 
         nodeID = 10;
-        portOff = 0;
         setLowMemory(false);
         isMembers = true;
         initClientFrame(503, 765);
-
     }
 
     /**
@@ -2882,8 +2880,8 @@ public class Client extends RSApplet {
 				return;
 			}
 			nodeID = Integer.parseInt(args[0]);
-			// portOff = Integer.parseInt(args[1]);
-			portOff = 0;
+
+
 //			if (args[2].equals("lowmem"))
 //				setLowMem();
 //			else if (args[2].equals("highmem")) {
@@ -6376,7 +6374,7 @@ public class Client extends RSApplet {
 				loginMessage2 = "Connecting to server...";
 				drawLoginScreen(true);
 			}
-			socketStream = new RSSocket(this, openSocket(serverPort + portOff));
+			socketStream = new RSSocket(this, openSocket(serverPort));
 			long l = TextClass.longForName(s);
 			int i = (int) (l >> 16 & 31L);
 			stream.currentOffset = 0;
@@ -7763,7 +7761,7 @@ public class Client extends RSApplet {
 
 	public URL getCodeBase() {
 		try {
-			return new URL(serverAddress + ":" + (80 + portOff));
+			return new URL(serverAddress + ":" + 80 );
 		} catch (Exception _ex) {
 		}
 		return null;
@@ -12222,7 +12220,6 @@ public class Client extends RSApplet {
 	private String[] clanList = new String[100];
 	private int currentSong;
 	private static int nodeID = 10;
-	static int portOff;
 	static boolean clientData;
 	private static boolean isMembers = true;
 	private static boolean lowMem;
